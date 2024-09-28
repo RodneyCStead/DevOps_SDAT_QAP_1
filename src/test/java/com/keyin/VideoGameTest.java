@@ -7,11 +7,19 @@ public class VideoGameTest {
 
     @Test
     public void testVideoGameConstructor() {
-        VideoGame VideoGameUnderTest = new VideoGame("Guild Wars 2", "MMORPG", 10, 29.99);
+        VideoGame Game = new VideoGame("Guild Wars 2", "MMORPG", 10, 29.99);
 
-        Assertions.assertEquals("Guild Wars 2", VideoGameUnderTest.getTitle());
-        Assertions.assertEquals("MMORPG", VideoGameUnderTest.getGenre());
-        Assertions.assertEquals(10, VideoGameUnderTest.getRating());
-        Assertions.assertEquals(29.99, VideoGameUnderTest.getPrice());
+        Assertions.assertEquals("Guild Wars 2", Game.getTitle());
+        Assertions.assertEquals("MMORPG", Game.getGenre());
+        Assertions.assertEquals(10, Game.getRating());
+        Assertions.assertEquals(29.99, Game.getPrice());
+    }
+
+    @Test
+    public void testIsRatingGreaterThanAnother() {
+        VideoGame Game1 = new VideoGame("Guild Wars 2", "MMORPG", 10, 29.99);
+        VideoGame Game2 = new VideoGame("World of Warcraft", "MMORPG", 9, 29.99);
+
+        Assertions.assertTrue(Game1.isRatingGreaterThanAnother(Game2));
     }
 }
