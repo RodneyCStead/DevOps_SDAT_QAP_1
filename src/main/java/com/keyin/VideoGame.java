@@ -30,4 +30,7 @@ public class VideoGame {
         return price;
     }
 
+    public boolean isRatingGreaterThanAnother(VideoGame other) {
+        return this.rating > other.rating;
+    }
 }
