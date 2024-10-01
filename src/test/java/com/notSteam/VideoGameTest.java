@@ -34,4 +34,21 @@ public class VideoGameTest {
             Game.setRating(-1);
         });
     }
+
+    @Test
+    public void testApplyDiscount() {
+        VideoGame game = new VideoGame("Mount & Blade II: Bannerlord", "SANDBOX RPG", 10, 20);
+
+        Assertions.assertEquals(18.00, game.applyDiscount(10));
+        Assertions.assertEquals(10.00, game.applyDiscount(50));
+        Assertions.assertEquals(0.00, game.applyDiscount(100));
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            game.applyDiscount(-10);
+        });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            game.applyDiscount(110);
+        });
+    }
 }
