@@ -1,4 +1,4 @@
-package com.keyin;
+package com.notSteam;
 
 public class VideoGame {
 
@@ -24,6 +24,14 @@ public class VideoGame {
 
     public int getRating() {
         return rating;
+    }
+
+    public void setRating (int rating) {
+        if (rating <0 || rating > 10) {
+            throw new IllegalArgumentException("Rating must be between 0 and 10");
+        } else {
+            this.rating = rating;
+        }
     }
 
     public double getPrice() {

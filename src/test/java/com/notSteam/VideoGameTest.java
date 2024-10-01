@@ -1,4 +1,4 @@
-package com.keyin;
+package com.notSteam;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,5 +21,17 @@ public class VideoGameTest {
         VideoGame Game2 = new VideoGame("World of Warcraft", "MMORPG", 9, 29.99);
 
         Assertions.assertTrue(Game1.isRatingGreaterThanAnother(Game2));
+    }
+
+    @Test
+    public void testSetRating() {
+        VideoGame Game = new VideoGame("The last of Us", "MMORPG", 10, 29.99);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Game.setRating(11);
+        });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Game.setRating(-1);
+        });
     }
 }
