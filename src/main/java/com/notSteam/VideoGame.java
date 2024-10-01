@@ -1,5 +1,7 @@
 package com.notSteam;
 
+import java.util.List;
+
 public class VideoGame {
 
     private String title;
@@ -54,7 +56,27 @@ public class VideoGame {
         }
     }
 
+    public double calculateFinalPrice(List <Double> discounts, double taxPercentage) {
+        double finalPrice = price;
+
+        for (double discount : discounts) {
+            if (discount < 0 || discount > 100) {
+                throw new IllegalArgumentException("Discount percentage must be between 0 and 100");
+            }
+            finalPrice -= finalPrice * (discount / 100);
+        }
+
+        if (taxPercentage < 0 || taxPercentage > 100) {
+            throw new IllegalArgumentException("Tax percentage must be between 0 and 100");
+        }
+
+        finalPrice += finalPrice * (taxPercentage / 100);
+        return finalPrice;
+    }
+
+
     public boolean isRatingGreaterThanAnother(VideoGame other) {
         return this.rating > other.rating;
     }
+
 }
