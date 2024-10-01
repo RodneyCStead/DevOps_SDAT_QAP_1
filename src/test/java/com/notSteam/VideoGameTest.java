@@ -3,6 +3,9 @@ package com.notSteam;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class VideoGameTest {
 
     @Test
@@ -51,4 +54,12 @@ public class VideoGameTest {
             game.applyDiscount(110);
         });
     }
+
+    @Test
+    public void testCalculateFinalPrice() {
+        VideoGame game = new VideoGame("Mount & Blade II: Bannerlord", "SANDBOX RPG", 10, 20);
+        List<Double> discounts = Arrays.asList(10.0, 20.0, 30.0);
+        double taxPercentage = 10.0;
+
+        Assertions.assertEquals(11.09, Math.round(game.calculateFinalPrice(discounts, taxPercentage) * 100.0) / 100.0);    }
 }
